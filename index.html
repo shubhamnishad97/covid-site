@@ -68,14 +68,14 @@
       <center>
       <h5>
         
-          Confirmed: <span class="badge badge-primary">291,931</span>
-          &nbsp; Deaths: <span class="badge badge-danger">10,891</span>
-          &nbsp; Recovered: <span class="badge badge-success">232,915</span>
+          Confirmed: <span id="confirmed_total" class="badge badge-primary"></span>
+          &nbsp; Deaths: <span id="confirmed_deaths" class="badge badge-danger"></span>
+          &nbsp; Recovered: <span id="confirmed_recover" class="badge badge-success"></span>
         
       </h5>
       </center>
       <center><h6>View the data and prediction in each region by clicking the map.</h6></center>
-      <center><small class="text-muted"> Updated: 2020-11-15 </small></center>
+      <center><small class="text-muted"> Updated: <span id="date">2020-11-15<span> </small></center>
       <br>
       <center>
         <div id="map" style="width: 84vw; height: 52vh"></div>
@@ -148,13 +148,22 @@
     <script src="static/jquery-3.4.1.min.js"></script>
     <script src="static/jquery-jvectormap-2.0.5.min.js"></script>
     <script src="static/jquery-jvectormap-ca-lcc.js"></script>
-
+     <script src="static/data.js"></script>
     <script>
-    var info = {
-      "active":1,
-      "dead":2
-    }
 
+      function numberWithCommas(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+     $("#confirmed_total").text(numberWithCommas(confirmed_total)); 
+
+     $("#confirmed_deaths").text(numberWithCommas(confirmed_deaths)); 
+
+     $("#confirmed_recover").text(numberWithCommas(confirmed_recover)); 
+
+     $("#date").text(date);
+
+    
     var prov = {
       "CA-NT":"Northwest Territories",
       "CA-NU":"Nunavut",
@@ -171,53 +180,7 @@
       "CA-AB":"Alberta"
     };
 
-    var total = {
-      "CA-NT":15,  //Northwest Territories
-      "CA-NU":4,  //Nunavut
-      "CA-NS":1142,  //  Nova Scotia
-      "CA-BC":20985,  //British Columbia
-      "CA-SK":4820,  //Saskatchewan
-      "CA-QC":122643,  //Québec
-      "CA-PE":68,  //Prince Edward Island
-      "CA-MB":10453,  //Manitoba
-      "CA-YT":24,  //Yukon
-      "CA-NB":364, //New Brunswick
-      "CA-NL":301,  //Newfoundland and Labrador
-      "CA-ON":92761, //Ontario
-      "CA-AB":38338  //Alberta
-    };
-
-    var deaths = {
-      "CA-NT":0,  //Northwest Territories
-      "CA-NU":0,  //Nunavut
-      "CA-NS":65,  //  Nova Scotia
-      "CA-BC":290,  //British Columbia
-      "CA-SK":29,  //Saskatchewan
-      "CA-QC":6611,  //Québec
-      "CA-PE":0,  //Prince Edward Island
-      "CA-MB":152,  //Manitoba
-      "CA-YT":1,  //Yukon
-      "CA-NB":6, //New Brunswick
-      "CA-NL":4,  //Newfoundland and Labrador
-      "CA-ON":3332, //Ontario
-      "CA-AB":401  //Alberta
-    };
-
-    var recover = {
-      "CA-NT":10,  //Northwest Territories
-      "CA-NU":0,  //Nunavut
-      "CA-NS":1056,  //  Nova Scotia
-      "CA-BC":14901,  //British Columbia
-      "CA-SK":3100,  //Saskatchewan
-      "CA-QC":103668,  //Québec
-      "CA-PE":64,  //Prince Edward Island
-      "CA-MB":3891,  //Manitoba
-      "CA-YT":22,  //Yukon
-      "CA-NB":339, //New Brunswick
-      "CA-NL":289,  //Newfoundland and Labrador
-      "CA-ON":77241, //Ontario
-      "CA-AB":28321  //Alberta
-    };
+   
 
     $('#map').vectorMap({
     map: 'ca_lcc',
