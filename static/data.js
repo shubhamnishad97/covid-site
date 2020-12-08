@@ -1,4 +1,4 @@
-var date = '2020-12-06';
+var date = '2020-12-07';
 
 var confirmed_total = 297046;
 
