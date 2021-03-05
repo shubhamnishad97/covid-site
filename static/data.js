@@ -1,53 +1,70 @@
-var date = '2020-12-07';
+var date = '2021-03-04';
 
-var confirmed_total = 297046;
+var confirmed_total = 883354;
 
-var confirmed_deaths = 10981;
+var confirmed_deaths = 22152;
 
-var confirmed_recover = 235388;
+var confirmed_recover = 826328;
+
+var confirmed_vaccines = 558146;
 
 var total ={
-      "CA-AB": 37312,
-      "CA-BC": 20985,
-      "CA-MB": 10947,
-      "CA-NB": 367,
-      "CA-NL": 303,
-      "CA-NS": 1144,
-      "CA-NU": 18,
-      "CA-NT": 15,
-      "CA-ON": 97010,
-      "CA-PE": 68,
-      "CA-QC": 123853,
-      "CA-SK": 5000,
-      "CA-YT": 24
+      "CA-AB": 134785,
+      "CA-BC": 82473,
+      "CA-MB": 32051,
+      "CA-NB": 1443,
+      "CA-NL": 1002,
+      "CA-NS": 1649,
+      "CA-NU": 369,
+      "CA-NT": 47,
+      "CA-ON": 309728,
+      "CA-PE": 138,
+      "CA-QC": 290377,
+      "CA-SK": 29220,
+      "CA-YT": 72
 }
 var deaths ={
-      "CA-AB": 407,
-      "CA-BC": 290,
-      "CA-MB": 162,
-      "CA-NB": 6,
-      "CA-NL": 4,
+      "CA-AB": 1911,
+      "CA-BC": 1376,
+      "CA-MB": 903,
+      "CA-NB": 28,
+      "CA-NL": 6,
       "CA-NS": 65,
-      "CA-NU": 0,
+      "CA-NU": 2,
       "CA-NT": 0,
-      "CA-ON": 3389,
+      "CA-ON": 7024,
       "CA-PE": 0,
-      "CA-QC": 6626,
-      "CA-SK": 31,
+      "CA-QC": 10445,
+      "CA-SK": 391,
       "CA-YT": 1
 }
 var recover ={
-      "CA-AB": 28321,
-      "CA-BC": 14901,
-      "CA-MB": 4070,
-      "CA-NB": 339,
-      "CA-NL": 289,
-      "CA-NS": 1058,
-      "CA-NU": 0,
-      "CA-NT": 10,
-      "CA-ON": 78303,
-      "CA-PE": 64,
-      "CA-QC": 104848,
-      "CA-SK": 3163,
-      "CA-YT": 22
+      "CA-AB": 128261,
+      "CA-BC": 76289,
+      "CA-MB": 30005,
+      "CA-NB": 1378,
+      "CA-NL": 871,
+      "CA-NS": 1555,
+      "CA-NU": 354,
+      "CA-NT": 46,
+      "CA-ON": 287424,
+      "CA-PE": 114,
+      "CA-QC": 272553,
+      "CA-SK": 27407,
+      "CA-YT": 71
+}
+var vaccines ={
+      "CA-AB": 89786,
+      "CA-BC": 86746,
+      "CA-MB": 29583,
+      "CA-NB": 12142,
+      "CA-NL": 8427,
+      "CA-NS": 14219,
+      "CA-NU": 5125,
+      "CA-NT": 4558,
+      "CA-ON": 268118,
+      "CA-PE": 5273,
+      "CA-QC": 0,
+      "CA-SK": 27812,
+      "CA-YT": 6357
 }

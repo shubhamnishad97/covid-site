@@ -68,6 +68,7 @@
           Confirmed: <span id="confirmed_total" class="badge badge-primary"></span>
           &nbsp; Deaths: <span id="confirmed_deaths" class="badge badge-danger"></span>
           &nbsp; Recovered: <span id="confirmed_recover" class="badge badge-success"></span>
+          &nbsp; Vaccines: <span id="confirmed_vaccines" class="badge badge-primary"></span>
         
       </h5>
       </center>
@@ -157,6 +158,8 @@
      $("#confirmed_deaths").text(numberWithCommas(confirmed_deaths)); 
 
      $("#confirmed_recover").text(numberWithCommas(confirmed_recover)); 
+     $("#confirmed_vaccines").text(numberWithCommas(confirmed_vaccines)); 
+     
 
      $("#date").text(date);
 
@@ -194,7 +197,8 @@
         prov[code]+'<br/>'+
         'Confirmed:'+total[code]+'<br/>'+
         'Deaths:'+deaths[code]+'<br/>'+
-        'Recovered:'+recover[code]
+        'Recovered:'+recover[code]+'<br/>'+
+        'Vaccinated:'+vaccines[code]
         );
       
     },
