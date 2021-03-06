@@ -1,40 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="static/uottawa_ver_white.ico">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="static/uottawa_ver_white.ico" />
 
     <title>Prediction Model</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="static/bootstrap.min.css" rel="stylesheet">
+    <link href="static/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="static/index.css" rel="stylesheet">
+    <link href="static/index.css" rel="stylesheet" />
   </head>
   <body>
-
-<header>
+    <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="index.html"> 
-          <img src="static/uottawa_hor_wg9.png" width="180" alt="">
+        <a class="navbar-brand" href="index.html">
+          <img src="static/uottawa_hor_wg9.png" width="180" alt="" />
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse text-right" id="navbarCollapse">
           <ul class="navbar-nav ml-auto flex-nowrap">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.html"
+                >Home <span class="sr-only">(current)</span></a
+              >
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="model.html">Model</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="prediction.html">Results</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="compare.html">Compare</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="data.html">Data</a>
@@ -50,76 +65,142 @@
       </nav>
     </header>
 
-  <main role="main">
-
-   <div class="container">
-        <br><br><br><br>
+    <main role="main">
+      <div class="container">
+        <br /><br /><br /><br />
         <h1>Prediction Model</h1>
         <div class="text-justify">
-          <p>In this project we make use of Compartmental models. Compartmental models simplify the mathematical modelling of infectious diseases. The population is assigned to compartments with labels - for example, S, I, or R, (Susceptible, Infectious, or Recovered). People may progress between compartments. The order of the labels usually shows the flow patterns between the compartments; for example SEIS means susceptible, exposed, infectious, then susceptible again.</p>
-          
-          <p>These Models try to predict things such as how a disease spreads, or the total number infected, or the duration of an epidemic, and to estimate various epidemiological parameters such as the reproductive number. Such models can show how different public health interventions may affect the outcome of the epidemic, e.g., what the most efficient technique is for issuing a limited number of vaccines in a given population.</p>
+          <p>
+            In this project we make use of Compartmental models. Compartmental
+            models simplify the mathematical modelling of infectious diseases.
+            The population is assigned to compartments with labels - for
+            example, S, I, or R, (Susceptible, Infectious, or Recovered). People
+            may progress between compartments. The order of the labels usually
+            shows the flow patterns between the compartments; for example SEIS
+            means susceptible, exposed, infectious, then susceptible again.
+          </p>
 
-          <p>Over the time of this project, we plan to improve upon the SIR and SIER models in predicting the infected population and death rate.</p>
+          <p>
+            These Models try to predict things such as how a disease spreads, or
+            the total number infected, or the duration of an epidemic, and to
+            estimate various epidemiological parameters such as the reproductive
+            number. Such models can show how different public health
+            interventions may affect the outcome of the epidemic, e.g., what the
+            most efficient technique is for issuing a limited number of vaccines
+            in a given population.
+          </p>
+
+          <p>
+            Over the time of this project, we plan to improve upon the SIR and
+            SIER models in predicting the infected population and death rate.
+          </p>
 
           <h4>The SIR Model</h4>
           <p>
-            The SIR model is one of the simplest compartmental models, and many models are derivatives of this basic form. The model consists of three compartments:
-          </p>  
-            <ul>
-              <li>
-                S: The number of susceptible individuals. When a susceptible and an infectious individual come into "infectious contact", the susceptible individual contracts the disease and transitions to the infectious compartment.
-              </li>
-              <li>  
-              I: The number of infectious individuals. These are individuals who have been infected and are capable of infecting susceptible individuals.
-              </li>
-              <li>
-              R for the number of removed (and immune) or deceased individuals. These are individuals who have been infected and have either recovered from the disease and entered the removed compartment, or died. It is assumed that the number of deaths is negligible with respect to the total population. This compartment may also be called "recovered" or "resistant".
-              </li>
-            </ul>
-            <br>
-            <div class="d-flex justify-content-center">
-            <img class="img-responsive" src="static/images/sir.svg" alt="sir model">
-            </div>
-            <br>
-            <p>This model is reasonably predictive for infectious diseases that are transmitted from human to human, and where recovery confers lasting resistance, such as measles, mumps and rubella.
-            </p>  
-          
+            The SIR model is one of the simplest compartmental models, and many
+            models are derivatives of this basic form. The model consists of
+            three compartments:
+          </p>
+          <ul>
+            <li>
+              S: The number of susceptible individuals. When a susceptible and
+              an infectious individual come into "infectious contact", the
+              susceptible individual contracts the disease and transitions to
+              the infectious compartment.
+            </li>
+            <li>
+              I: The number of infectious individuals. These are individuals who
+              have been infected and are capable of infecting susceptible
+              individuals.
+            </li>
+            <li>
+              R for the number of removed (and immune) or deceased individuals.
+              These are individuals who have been infected and have either
+              recovered from the disease and entered the removed compartment, or
+              died. It is assumed that the number of deaths is negligible with
+              respect to the total population. This compartment may also be
+              called "recovered" or "resistant".
+            </li>
+          </ul>
+          <br />
+          <div class="d-flex justify-content-center">
+            <img
+              class="img-responsive"
+              src="static/images/sir.svg"
+              alt="sir model"
+            />
+          </div>
+          <br />
+          <p>
+            This model is reasonably predictive for infectious diseases that are
+            transmitted from human to human, and where recovery confers lasting
+            resistance, such as measles, mumps and rubella.
+          </p>
 
           <h4>The SIER Model</h4>
-          <p>For many important infections, there is a significant incubation period during which individuals have been infected but are not yet infectious themselves. During this period the individual is in compartment E (for exposed).</p>
-          <br>
-            <div class="d-flex justify-content-center">
-            <img class="img-responsive" src="static/images/SEIR.png" alt="SEIR model">
-            </div>
-            <br>
-          <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology">Source</a>  
+          <p>
+            For many important infections, there is a significant incubation
+            period during which individuals have been infected but are not yet
+            infectious themselves. During this period the individual is in
+            compartment E (for exposed).
+          </p>
+          <br />
+          <div class="d-flex justify-content-center">
+            <img
+              class="img-responsive"
+              src="static/images/SEIR.png"
+              alt="SEIR model"
+            />
+          </div>
+          <br />
+          <a
+            href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology"
+            >Source</a
+          >
         </div>
-    </div>
+      </div>
+    </main>
 
-  </main>
-
-     <footer class="container py-5">
+    <footer class="container py-5">
       <div class="row">
         <div class="col-12 col-md">
-          <a class="text-muted" href="https://github.com/SITE5039">Maintained by SITE5039</a>
+          <a class="text-muted" href="https://github.com/SITE5039"
+            >Maintained by SITE5039</a
+          >
           <small class="d-block mb-3 text-muted">&copy; 2020-2021</small>
         </div>
-        
+
         <div class="col-6 col-md">
           <h5>Resources</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="https://www.uottawa.ca/en">University of Ottawa</a></li>
-            <li><a class="text-muted" href="http://www.site.uottawa.ca/~yymao/index_main.html">Prof. Yongyi Mao</a></li>
-            <li><a class="text-muted" href="https://advancedsymbolics.com/">Advanced Symbolics</a></li>
-            
+            <li>
+              <a class="text-muted" href="https://www.uottawa.ca/en"
+                >University of Ottawa</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-muted"
+                href="http://www.site.uottawa.ca/~yymao/index_main.html"
+                >Prof. Yongyi Mao</a
+              >
+            </li>
+            <li>
+              <a class="text-muted" href="https://advancedsymbolics.com/"
+                >Advanced Symbolics</a
+              >
+            </li>
           </ul>
         </div>
         <div class="col-6 col-md">
           <h5>Technology</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="prediction.html">Prediction Model</a></li>
-            <li><a class="text-muted" href="compare.html">Model Comparison</a></li>
+            <li>
+              <a class="text-muted" href="prediction.html">Prediction Model</a>
+            </li>
+            <li>
+              <a class="text-muted" href="compare.html">Model Comparison</a>
+            </li>
             <li><a class="text-muted" href="data.html">Data</a></li>
           </ul>
         </div>
@@ -127,18 +208,25 @@
           <h5>About</h5>
           <ul class="list-unstyled text-small">
             <li><a class="text-muted" href="about.html">Team</a></li>
-            <li><a class="text-muted" href="update.html">News and Update</a></li>
-            <li><a class="text-muted" href="about.html#contact">Contact Us</a></li>
+            <li>
+              <a class="text-muted" href="update.html">News and Update</a>
+            </li>
+            <li>
+              <a class="text-muted" href="about.html#contact">Contact Us</a>
+            </li>
           </ul>
         </div>
       </div>
     </footer>
-    
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="static/jquery-3.2.1.slim.min.js"></script>
-    <script>window.jQuery || document.write('<script src="jquery-slim.min.js"><\/script>')</script>
+    <script>
+      window.jQuery ||
+        document.write('<script src="jquery-slim.min.js"><\/script>');
+    </script>
     <script src="static/popper.min.js"></script>
     <script src="static/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
