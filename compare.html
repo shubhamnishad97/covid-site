@@ -66,23 +66,62 @@
     <main role="main">
       <div class="container">
         <br /><br /><br />
-        <h1>Model Compare</h1>
+        <h1>Model Comparison</h1>
         <br />
+        <h2>Poisson Model Predictions</h2>
         <table id="table1" class="table table-hover">
           <thead class="thead-light">
             <tr>
               <th scope="col">Province</th>
               <th scope="col">
-                04-03-2021<br /><small>Real value<br /></small>
+                <span class="data-date"></span><br /><small
+                  >Real value<br
+                /></small>
               </th>
               <th scope="col">
-                04-03-2021<br /><small>pred. 10 days ago</small>
+                <span class="data-date"></span><br /><small
+                  >pred. 10 days ago</small
+                >
               </th>
               <th scope="col">
-                04-03-2021<br /><small>pred. 20 days ago</small>
+                <span class="data-date"></span><br /><small
+                  >pred. 20 days ago</small
+                >
               </th>
               <th scope="col">
-                04-03-2021<br /><small>pred. 30 days ago</small>
+                <span class="data-date"></span><br /><small
+                  >pred. 30 days ago</small
+                >
+              </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <br />
+        <h2>SEIR Model Predictions</h2>
+        <table id="table2" class="table table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Province</th>
+              <th scope="col">
+                <span class="data-date"></span><br /><small
+                  >Real value<br
+                /></small>
+              </th>
+              <th scope="col">
+                <span class="data-date"></span><br /><small
+                  >pred. 10 days ago</small
+                >
+              </th>
+              <th scope="col">
+                <span class="data-date"></span><br /><small
+                  >pred. 20 days ago</small
+                >
+              </th>
+              <th scope="col">
+                <span class="data-date"></span><br /><small
+                  >pred. 30 days ago</small
+                >
               </th>
             </tr>
           </thead>
@@ -172,8 +211,19 @@
         "CA-SK": "Saskatchewan",
       };
 
+      var seir_mapping = {
+        "CA-ON": "Ontario",
+        "CA-QC": "Quebec",
+        "CA-AB": "Alberta",
+        "CA-BC": "British Columbia",
+      };
+
       function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (typeof x !== "undefined") {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        } else {
+          return "N/A";
+        }
       }
 
       function getNumber(theNumber) {
@@ -181,17 +231,20 @@
           return (
             "<small class='text-success'>+" +
             numberWithCommas(theNumber) +
+            "%" +
             "</small>"
           );
         } else {
           return (
             "<small class='text-danger'>" +
             numberWithCommas(theNumber) +
+            "%" +
             "</small>"
           );
         }
       }
       var trHTML = "";
+      var trHTML2 = "";
       $(function () {
         $.each(mapping, function (i, item) {
           trHTML +=
@@ -201,22 +254,57 @@
             numberWithCommas(active_cases[i]) +
             "</td><td>" +
             "<span>" +
-            numberWithCommas(prev10json[i]) +
+            numberWithCommas(poisson_prev10json[i]) +
             "      <small>" +
-            getNumber(diffprev10json[i]) +
+            getNumber(poisson_diffprev10json[i]) +
             "</small><span>" +
             "</td><td>" +
             "<span>" +
-            numberWithCommas(prev20json[i]) +
+            numberWithCommas(poisson_prev20json[i]) +
             "      <small>" +
-            getNumber(diffprev20json[i]) +
+            getNumber(poisson_diffprev20json[i]) +
             "</small><span>" +
             "</td><td>" +
-            "N/A" +
+            "<span>" +
+            numberWithCommas(poisson_prev30json[i]) +
+            "      <small>" +
+            getNumber(poisson_diffprev30json[i]) +
+            "</small><span>" +
             "</td></tr>";
         });
+
+        $.each(seir_mapping, function (i, item) {
+          trHTML2 +=
+            "<tr><td>" +
+            item +
+            "</td><td>" +
+            numberWithCommas(active_cases[i]) +
+            "</td><td>" +
+            "<span>" +
+            numberWithCommas(seir_prev10json[i]) +
+            "      <small>" +
+            getNumber(seir_diffprev10json[i]) +
+            "</small><span>" +
+            "</td><td>" +
+            "<span>" +
+            numberWithCommas(seir_prev20json[i]) +
+            "      <small>" +
+            getNumber(seir_diffprev20json[i]) +
+            "</small><span>" +
+            "</td><td>" +
+            "<span>" +
+            numberWithCommas(seir_prev30json[i]) +
+            "      <small>" +
+            getNumber(seir_diffprev30json[i]) +
+            "</small><span>" +
+            "</td></tr>";
+        });
+
         $("#table1").append(trHTML);
+        $("#table2").append(trHTML2);
       });
+
+      $(".data-date").text(date.split("-").reverse().join("-"));
     </script>
   </body>
 </html>

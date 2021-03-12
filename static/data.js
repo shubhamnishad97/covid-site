@@ -1,117 +1,169 @@
-var date = '2021-03-05';
+var date = '2021-03-11';
 
-var confirmed_total = 886600;
+var confirmed_total = 904974;
 
-var confirmed_deaths = 22187;
+var confirmed_deaths = 22368;
 
-var confirmed_recover = 829415;
+var confirmed_recover = 846706;
 
-var confirmed_vaccines = 561238;
+var confirmed_vaccines = 587721;
 
 var total ={
-      "CA-AB": 135196,
-      "CA-BC": 83107,
-      "CA-MB": 32104,
-      "CA-NB": 1447,
-      "CA-NL": 1003,
-      "CA-NS": 1651,
-      "CA-NU": 373,
+      "CA-AB": 137137,
+      "CA-BC": 86219,
+      "CA-MB": 32509,
+      "CA-NB": 1462,
+      "CA-NL": 1011,
+      "CA-NS": 1665,
+      "CA-NU": 381,
       "CA-NT": 47,
-      "CA-ON": 310854,
-      "CA-PE": 139,
-      "CA-QC": 291175,
-      "CA-SK": 29432,
+      "CA-ON": 318745,
+      "CA-PE": 143,
+      "CA-QC": 295390,
+      "CA-SK": 30193,
       "CA-YT": 72
 }
 var deaths ={
-      "CA-AB": 1913,
-      "CA-BC": 1380,
-      "CA-MB": 904,
-      "CA-NB": 28,
+      "CA-AB": 1933,
+      "CA-BC": 1397,
+      "CA-MB": 911,
+      "CA-NB": 29,
       "CA-NL": 6,
       "CA-NS": 65,
       "CA-NU": 2,
       "CA-NT": 0,
-      "CA-ON": 7040,
+      "CA-ON": 7105,
       "CA-PE": 0,
-      "CA-QC": 10455,
-      "CA-SK": 393,
+      "CA-QC": 10518,
+      "CA-SK": 401,
       "CA-YT": 1
 }
 var recover ={
-      "CA-AB": 128644,
-      "CA-BC": 76752,
-      "CA-MB": 30067,
-      "CA-NB": 1385,
-      "CA-NL": 880,
-      "CA-NS": 1555,
-      "CA-NU": 355,
+      "CA-AB": 130716,
+      "CA-BC": 79829,
+      "CA-MB": 30394,
+      "CA-NB": 1398,
+      "CA-NL": 933,
+      "CA-NS": 1581,
+      "CA-NU": 360,
       "CA-NT": 46,
-      "CA-ON": 288583,
+      "CA-ON": 295128,
       "CA-PE": 115,
-      "CA-QC": 273430,
-      "CA-SK": 27532,
+      "CA-QC": 277738,
+      "CA-SK": 28397,
       "CA-YT": 71
 }
 var vaccines ={
-      "CA-AB": 90486,
-      "CA-BC": 86865,
-      "CA-MB": 29847,
-      "CA-NB": 12142,
-      "CA-NL": 8427,
-      "CA-NS": 14395,
-      "CA-NU": 5144,
-      "CA-NT": 4558,
-      "CA-ON": 269063,
-      "CA-PE": 5273,
+      "CA-AB": 91366,
+      "CA-BC": 87009,
+      "CA-MB": 31103,
+      "CA-NB": 12152,
+      "CA-NL": 9170,
+      "CA-NS": 15383,
+      "CA-NU": 5729,
+      "CA-NT": 11151,
+      "CA-ON": 281714,
+      "CA-PE": 5584,
       "CA-QC": 0,
-      "CA-SK": 27945,
-      "CA-YT": 7093
+      "CA-SK": 28107,
+      "CA-YT": 9253
 }
 var active_cases ={
-      "CA-AB": 4639,
-      "CA-BC": 4975,
-      "CA-MB": 1133,
-      "CA-NB": 34,
-      "CA-NL": 117,
-      "CA-NS": 31,
-      "CA-NU": 16,
+      "CA-AB": 4488,
+      "CA-BC": 4993,
+      "CA-MB": 1204,
+      "CA-NB": 35,
+      "CA-NL": 72,
+      "CA-NS": 19,
+      "CA-NU": 19,
       "CA-NT": 1,
-      "CA-ON": 15231,
-      "CA-PE": 24,
-      "CA-QC": 7290,
-      "CA-SK": 1507,
+      "CA-ON": 16512,
+      "CA-PE": 28,
+      "CA-QC": 7134,
+      "CA-SK": 1395,
       "CA-YT": 0
 }
-var prev10json ={
-      "CA-AB": 3555,
-      "CA-BC": 4797,
-      "CA-MB": 1202,
-      "CA-ON": 11930,
-      "CA-QC": 21380,
-      "CA-SK": 1904
+var poisson_prev10json ={
+      "CA-AB": 3552,
+      "CA-BC": 4783,
+      "CA-MB": 1176,
+      "CA-ON": 12148,
+      "CA-QC": 19979,
+      "CA-SK": 1791
 }
-var prev20json ={
-      "CA-AB": 3130,
-      "CA-BC": 4470,
-      "CA-MB": 1523,
-      "CA-ON": 10858,
-      "CA-QC": 50094,
-      "CA-SK": 2352
+var poisson_prev20json ={
+      "CA-AB": 2821,
+      "CA-BC": 4578,
+      "CA-MB": 1115,
+      "CA-ON": 9547,
+      "CA-QC": 43432,
+      "CA-SK": 1934
 }
-var diffprev10json ={
-      "CA-AB": -1084,
-      "CA-BC": -178,
-      "CA-MB": 69,
-      "CA-ON": -3301,
-      "CA-QC": 14090,
-      "CA-SK": 397
+var poisson_prev30json ={
+      "CA-AB": 2787,
+      "CA-BC": 3907,
+      "CA-MB": 1529,
+      "CA-ON": 9736,
+      "CA-QC": 98342,
+      "CA-SK": 3044
 }
-var diffprev20json ={
-      "CA-AB": -1509,
-      "CA-BC": -505,
-      "CA-MB": 390,
-      "CA-ON": -4373,
-      "CA-QC": 42804,
-      "CA-SK": 845
+var seir_prev10json ={
+      "CA-AB": 973,
+      "CA-BC": 4560,
+      "CA-ON": 13150,
+      "CA-QC": 4374
+}
+var seir_prev20json ={
+      "CA-AB": 3594,
+      "CA-BC": 3693,
+      "CA-ON": 25197,
+      "CA-QC": 6376
+}
+var seir_prev30json ={
+      "CA-AB": 4143,
+      "CA-BC": 5521,
+      "CA-ON": 25804,
+      "CA-QC": 8007
+}
+var poisson_diffprev10json ={
+      "CA-AB": -20,
+      "CA-BC": -4,
+      "CA-MB": -2,
+      "CA-ON": -26,
+      "CA-QC": 180,
+      "CA-SK": 28
+}
+var poisson_diffprev20json ={
+      "CA-AB": -37,
+      "CA-BC": -8,
+      "CA-MB": -7,
+      "CA-ON": -42,
+      "CA-QC": 508,
+      "CA-SK": 38
+}
+var poisson_diffprev30json ={
+      "CA-AB": -37,
+      "CA-BC": -21,
+      "CA-MB": 27,
+      "CA-ON": -41,
+      "CA-QC": 1278,
+      "CA-SK": 118
+}
+var seir_diffprev10json ={
+      "CA-AB": -78,
+      "CA-BC": -8,
+      "CA-ON": -20,
+      "CA-QC": -38
+}
+var seir_diffprev20json ={
+      "CA-AB": -19,
+      "CA-BC": -26,
+      "CA-ON": 52,
+      "CA-QC": -10
+}
+var seir_diffprev30json ={
+      "CA-AB": -7,
+      "CA-BC": 10,
+      "CA-ON": 56,
+      "CA-QC": 12
 }
