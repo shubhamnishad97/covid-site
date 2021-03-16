@@ -67,6 +67,34 @@
       <div class="container">
         <br /><br /><br />
         <h1>Manitoba</h1>
+        <table id="table1" class="table table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Province</th>
+              <th scope="col">
+                <span class="data-date"></span><br /><small
+                  >Real value<br
+                /></small>
+              </th>
+              <th scope="col">
+                <span class="data-date"></span><br /><small
+                  >pred. 10 days ago</small
+                >
+              </th>
+              <th scope="col">
+                <span class="data-date"></span><br /><small
+                  >pred. 20 days ago</small
+                >
+              </th>
+              <th scope="col">
+                <span class="data-date"></span><br /><small
+                  >pred. 30 days ago</small
+                >
+              </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
         <center><h4>Cummulative Cases in Manitoba</h4></center>
         <iframe
           src="../graphs/cases-Manitoba.html"
@@ -188,5 +216,71 @@
     <script src="../static/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="../static/holder.min.js"></script>
+    <script src="../static/data.js"></script>
+    <script>
+      var mapping = {
+        "CA-MB": "Manitoba",
+      };
+
+      function numberWithCommas(x) {
+        if (typeof x !== "undefined") {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        } else {
+          return "N/A";
+        }
+      }
+
+      function getNumber(theNumber) {
+        if (theNumber > 0) {
+          return (
+            "<small class='text-success'>+" +
+            numberWithCommas(theNumber) +
+            "%" +
+            "</small>"
+          );
+        } else {
+          return (
+            "<small class='text-danger'>" +
+            numberWithCommas(theNumber) +
+            "%" +
+            "</small>"
+          );
+        }
+      }
+      var trHTML = "";
+
+      $(function () {
+        $.each(mapping, function (i, item) {
+          trHTML +=
+            "<tr><td>" +
+            item +
+            "</td><td>" +
+            numberWithCommas(active_cases[i]) +
+            "</td><td>" +
+            "<span>" +
+            numberWithCommas(poisson_prev10json[i]) +
+            "      <small>" +
+            getNumber(poisson_diffprev10json[i]) +
+            "</small><span>" +
+            "</td><td>" +
+            "<span>" +
+            numberWithCommas(poisson_prev20json[i]) +
+            "      <small>" +
+            getNumber(poisson_diffprev20json[i]) +
+            "</small><span>" +
+            "</td><td>" +
+            "<span>" +
+            numberWithCommas(poisson_prev30json[i]) +
+            "      <small>" +
+            getNumber(poisson_diffprev30json[i]) +
+            "</small><span>" +
+            "</td></tr>";
+        });
+
+        $("#table1").append(trHTML);
+      });
+
+      $(".data-date").text(date.split("-").reverse().join("-"));
+    </script>
   </body>
 </html>
