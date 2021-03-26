@@ -50,7 +50,7 @@
               <a class="nav-link" href="compare.html">Compare</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="data.html">Data</a>
+              <a class="nav-link" href="data.html">Twitter Data</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="update.html">News & Updates</a>
@@ -69,13 +69,14 @@
         <h1>Prediction Model</h1>
         <div class="text-justify">
           <p>
-            In this project we make use of Compartmental models. Compartmental
-            models simplify the mathematical modelling of infectious diseases.
-            The population is assigned to compartments with labels - for
-            example, S, I, or R, (Susceptible, Infectious, or Recovered). People
-            may progress between compartments. The order of the labels usually
-            shows the flow patterns between the compartments; for example SEIS
-            means susceptible, exposed, infectious, then susceptible again.
+            In the first part of the project we make use of Compartmental
+            models. Compartmental models simplify the mathematical modelling of
+            infectious diseases. The population is assigned to compartments with
+            labels - for example, S, I, or R, (Susceptible, Infectious, or
+            Recovered). People may progress between compartments. The order of
+            the labels usually shows the flow patterns between the compartments;
+            for example SEIS means susceptible, exposed, infectious, then
+            susceptible again.
           </p>
 
           <p>
@@ -156,6 +157,41 @@
             >Source</a
           >
         </div>
+        <br>
+        <h4>Poisson Regression (GAM) Model</h4>
+        <div class="text-justify">
+          <p>
+            The goal is to provide the most accurate forecasts for COVID-19 in Canada for new cases, deaths and recovered cases. We'll be using an approach similar to that in the paper <a href="https://arxiv.org/abs/2004.14103">Spatiotemporal Dynamics, Nowcasting and Forecasting of COVID-19 in the United States</a> which uses a generalized additive model with Poisson distribution using temporal variables (number of infected, susceptible cases at time  𝑡−1
+ ), spatial coordinates, time varying covariates (control measures), and constant covariates (demographic, economic, etc). For now we only use temporal variables  𝐼𝑖𝑡
+  and  𝑍𝑖𝑡.
+          </p>
+          <p><b>Given variables</b>
+            <ul>
+           <li> <b>𝑌𝑖𝑡</b> : Current number of new case at time t for area i. Column "cases" in cases_timeseries_prov.csv </li>
+           <li> <b>𝐼𝑖𝑡</b> : Cumulative number of active infectious cases. Column "active_cases" in active_timeseries_prov.csv</li>
+          <li> <b>𝐶𝑖𝑡 </b>: Cumulative confirmed cases up to time t. Column "cumulative_cases" in active_timeseries_prov.csv</li>
+            <li> <b>𝑅𝑖𝑡</b> : Cumulative number of infections. Column "cumulative_recovered" in active_timeseries_prov.csv</li>
+            </ul>
+          </p>
+          <p>  
+            <b>Transformed variables</b>
+            
+            <ul>
+              <li> <b>𝑁𝑖</b> : Population of region i. Column "population"</li>
+                <li> <b>Δ𝐷𝑖𝑡</b> : New deaths/recovered cases at time t. Column "removed"</li>
+                  <li> <b>𝑆𝑖𝑡</b> : Number of susceptible subjects at time t defined by  𝑆𝑖𝑡=𝑁𝑖−𝐶𝑖𝑡. Column "susceptible"</li>
+                    <li> <b>𝑍𝑖𝑡</b> : Log ratio of susceptible subjects  𝑍𝑖𝑡=𝑙𝑜𝑔(𝑆𝑖𝑡/𝑁𝑖). Column "percent_susceptible" without log transform.</li>
+          </ul>
+          </p>
+          <p>
+            We'll be applying a similar but simpler version of the poisson regression as proposed in the paper mentioned above. Currently it only accounts for temporal effects. For a given province  𝑖
+  we have the new cases modelled as:
+   <center><b>𝑌𝑡∼𝑃𝑜𝑖𝑠𝑠𝑜𝑛(𝜇𝑡)𝑙𝑜𝑔(𝜇𝑡)=𝛽0+𝛽1𝑙𝑜𝑔(𝐼𝑡−1+1)+𝛽3(𝑆𝑡−1/𝑁)</b></center>
+   
+          </p>
+          <p>and the new deaths/recovered modelled as:
+   <center><b>Δ𝐷𝑡∼𝑃𝑜𝑖𝑠𝑠𝑜𝑛(𝜇𝑡𝐷)𝑙𝑜𝑔(𝜇𝑡𝐷)=𝛽𝐷1+𝛽𝐷2𝑙𝑜𝑔(𝐼𝑡−1+1)</b></center>
+          </p>
       </div>
     </main>
 
@@ -199,7 +235,7 @@
             <li>
               <a class="text-muted" href="compare.html">Model Comparison</a>
             </li>
-            <li><a class="text-muted" href="data.html">Data</a></li>
+            <li><a class="text-muted" href="data.html">Twitter Data</a></li>
           </ul>
         </div>
         <div class="col-6 col-md">
